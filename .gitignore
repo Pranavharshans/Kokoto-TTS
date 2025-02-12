@@ -1,0 +1,22 @@
+# Ignore everything
+*
+
+# But not main.py
+!main.py
+!.gitignore
+
+# Python specific
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Model files
+*.onnx
+
+# Data files
+*.wav
+*.json
+
+# Environment
+env/
+.env
