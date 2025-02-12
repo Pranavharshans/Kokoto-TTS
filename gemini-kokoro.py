@@ -13,7 +13,18 @@ if not GOOGLE_API_KEY:
     raise ValueError("GEMINI_API_KEY not found in environment variables")
 
 genai.configure(api_key=GOOGLE_API_KEY)
-model = genai.GenerativeModel('gemini-pro')
+model = genai.GenerativeModel('gemini-2.0-flash')
+
+# System prompt for consistent response generation
+SYSTEM_PROMPT = """You are a knowledgeable and engaging AI assistant who provides clear, 
+concise, and natural-sounding responses. Your responses should be:
+- Conversational and easy to listen to
+- Well-structured with natural pauses
+- Around 2-3 paragraphs long
+- Free of special characters, markdown, or formatting
+- Suitable for text-to-speech conversion
+
+Keep in mind that your response will be converted to speech, so aim for clarity and natural flow."""
 
 def get_user_input():
     """Get the user's question/prompt from terminal"""
@@ -21,8 +32,10 @@ def get_user_input():
     return input("> ")
 
 def generate_text(prompt):
-    """Generate text using Gemini API"""
-    response = model.generate_content(prompt)
+    """Generate text using Gemini API with system prompt"""
+    # Combine system prompt with user prompt
+    full_prompt = f"{SYSTEM_PROMPT}\n\nUser Question: {prompt}\n\nResponse:"
+    response = model.generate_content(full_prompt)
     return response.text
 
 def text_to_speech(text):
@@ -40,6 +53,7 @@ def text_to_speech(text):
 def main():
     print("Welcome to Gemini-Kokoro TTS!")
     print("This program will convert your questions into speech using Gemini AI and Kokoro TTS.")
+    print("The AI is optimized to generate clear, natural-sounding responses.")
     
     while True:
         user_prompt = get_user_input()
