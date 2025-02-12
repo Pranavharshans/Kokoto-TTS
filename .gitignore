@@ -4,6 +4,7 @@
 # But not main.py
 !main.py
 !.gitignore
+!gemini-kokoro.py
 
 # Python specific
 __pycache__/
