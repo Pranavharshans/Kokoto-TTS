@@ -1,0 +1,7 @@
+python3 -m venv realtime-tts
+source realtime-tts/bin/activate
+
+
+
+genai.configure(api_key="AIzaSyBKRgQjScOIdc7c3Af_KWwicLq3bpZ5f3I")
+model = genai.GenerativeModel("gemini-2.0-flash")
