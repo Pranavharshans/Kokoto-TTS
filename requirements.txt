@@ -1,0 +1,4 @@
+google-generativeai
+kokoro-onnx
+soundfile
+python-dotenv
