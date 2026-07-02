@@ -5,6 +5,9 @@
 !main.py
 !.gitignore
 !gemini-kokoro.py
+!README.md
+!requirements.txt
+!CLAUDE.md
 
 # Python specific
 __pycache__/
